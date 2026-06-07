@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Special+Gothic+Expanded+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>Tailwind CSS Documentation</header>
+        <h1>CORE CONCEPTS</h1>
+        <ul>
+            <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+            <li><a class="nav-link" href="#Styling_with_utility_classes">Styling with utility classes</a></li>
+            <li><a class="nav-link" href="#Hover,_focus,_and_other_states">Hover, focus, and other states</a></li>
+            <li><a class="nav-link" href="#Responsive_design">Responsive design</a></li>
+            <li><a class="nav-link" href="#Dark_mode">Dark mode</a></li>
+            <li><a class="nav-link" href="#Theme_variables">Theme variables</a></li>
+            <li><a class="nav-link" href="#Colors">Colors</a></li>
+            <li><a class="nav-link" href="#Adding_custom_styles">Adding custom styles</a></li>
+            <li><a class="nav-link" href="#Detecting_classes_in_source_files">Detecting classes in source files</a></li>
+            <li><a class="nav-link" href="#Functions_and_directives">Functions and directives</a></li>
+            <li><a class="nav-link" href="#Reference">Reference</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-doc">
+        <section class="main-section" id="Introduction">
+            <header>Introduction</header>
+            <article>
+                <p>Tailwind CSS is a utility-first CSS framework designed for building modern, responsive UIs without
+                    writing
+                    custom CSS. Instead of writing traditional CSS rules, you apply pre-defined utility classes directly
+                    in your
+                    HTML to style elements. This approach promotes rapid development, consistency, and flexibility.</p>
+                <p>Tailwind CSS shines in modern frontend workflows, and with tools like Vite, it integrates seamlessly
+                    for
+                    fast, efficient development. Ready to dive deeper? The official documentation is your best friend.
+                </p>
+            </article>
+        </section>
+        <section class="main-section" id="Styling_with_utility_classes">
+            <header>Styling with utility classes</header>
+            <article>
+                <p>Building complex components from a constrained set of primitive utilities.</p>
+                <p>You style things with Tailwind by combining many single-purpose presentational classes (utility
+                    classes)
+                    directly in your markup:</p>
+                <code>
+          <pre>
+  &lt;div class="mx-auto flex max-w-sm items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"&gt;
+    &lt;img class="size-12 shrink-0" src="/img/logo.svg" alt="ChitChat Logo" /&gt;
+    &lt;div&gt;
+      &lt;div class="text-xl font-medium text-black dark:text-white">ChitChat&lt;/div&gt;
+      &lt;p class="text-gray-500 dark:text-gray-400">You have a new message!&lt;/p>
+    &lt;/div&gt;
+  &lt;/div&gt;</pre>
+      </code>
+                <p>For example, in the UI above we've used:</p>
+                <ul>
+                    <li>The display and padding utilities (<code class="keywords">flex</code>,
+                        <code class="keywords">shrink-0</code>, and <code class="keywords">p-6</code>) to
+                        control the overall layout
+                    </li>
+                    <li>The max-width and margin utilities (<code class="keywords">max-w-sm</code> and
+                        <code class="keywords">mx-auto</code>) to constrain the card
+                        width and center it horizontally
+                    </li>
+                    <li>The background-color, border-radius, and box-shadow utilities (<code
+                            class="keywords">bg-white</code>,
+                        <code class="keywords">rounded-xl</code>, and <code class="keywords">shadow-lg</code>) to style
+                        the card's
+                        appearance
+                    </li>
+                    <li>The width and height utilities (<code class="keywords">size-12</code>) to set the width and
+                        height of the
+                        logo image</li>
+                    <li>The gap utilities (<code class="keywords">gap-x-4</code>) to handle the spacing between the logo
+                        and the
+                        text</li>
+                    <li>The font-size, color, and font-weight utilities (<code class="keywords">text-xl</code>,
+                        <code class="keywords">text-black</code>,
+                        <code class="keywords">font-medium</code>, etc.) to style the card text
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section class="main-section" id="Hover,_focus,_and_other_states">
+            <header>Hover, focus, and other states</header>
+            <article>
+                <p>Using utilities to style elements on hover, focus, and more.</p>
+                <p>Every utility class in Tailwind can be applied <em>conditionally</em> by adding a variant to the
+                    beginning of
+                    the class name that describes the condition you want to target.</p>
+                <p>For example, to apply the <code class="keywords">bg-sky-700</code> class on hover, use the
+                    <code class="keywords">hover:bg-sky-700</code>
+                    class:
+                </p>
+                <code>
+        &lt;button class="bg-sky-500 hover:bg-sky-700 ...">Save changes&lt;/button&gt;
+      </code>
+                <p>Tailwind includes variants for just about everything you'll ever need, including:</p>
+                <ul>
+                    <li>Pseudo-classes, like <code class="keywords">:hover</code>, <code class="keywords">:focus</code>,
+                        <code class="keywords">:first-child</code>, and
+                        <code class="keywords">:required</code>
+                    </li>
+                    <li>Pseudo-elements, like <code class="keywords">::before</code>, <code
+                            class="keywords">::after</code>,
+                        <code class="keywords">::placeholder</code>, and
+                        <code class="keywords">::selection</code>
+                    </li>
+                    <li>Media and feature queries, like responsive breakpoints, dark mode, and
+                        <code class="keywords">prefers-reduced-motion</code>
+                    </li>
+                    <li>Attribute selectors, like <code class="keywords">[dir="rtl"]</code> and
+                        <code class="keywords">[open]</code>
+                    </li>
+                    <li>Child selectors, like <code class="keywords">& > *</code> and <code class="keywords">& *</code>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section class="main-section" id="Responsive_design">
+            <header>Responsive design</header>
+            <article>
+                <p>Using responsive utility variants to build adaptive user interfaces.</p>
+                <p>Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it
+                    a piece
+                    of cake to build complex responsive interfaces without ever leaving your HTML.</p>
+                <p>First, make sure you've added the viewport meta tag to the <code class="keywords">&lt;head&gt;</code>
+                    of your
+                    document:</p>
+                <code>
+          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+        </code>
+                <p>Then to add a utility but only have it take effect at a certain breakpoint, all you need to do is
+                    prefix the
+                    utility with the breakpoint name, followed by the <code class="keywords">:</code> character:</p>
+                <code>
+          <em>&lt;!-- Width of 16 by default, 32 on medium screens, and 48 on large screens --&gt;</em><br>
+&lt;img class="w-16 md:w-32 lg:w-48" src="..." /&gt;
+        </code>
+                <p>There are five breakpoints by default, inspired by common device resolutions:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Breakpoint prefix</th>
+                            <th>Minimum width</th>
+                            <th>CSS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code class="keywords">sm</code></td>
+                            <td>40rem <em>(640px)</em></td>
+                            <td><code class="keywords">@media (width >= 40rem) { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code class="keywords">md</code></td>
+                            <td>48rem <em>(768px)</em></td>
+                            <td><code class="keywords">@media (width >= 48rem) { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code class="keywords">lg</code></td>
+                            <td>64rem <em>(1024px)</em></td>
+                            <td><code class="keywords">@media (width >= 64rem) { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code class="keywords">xl</code></td>
+                            <td>80rem <em>(1280px)</em></td>
+                            <td><code class="keywords">@media (width >= 80rem) { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code class="keywords">2xl</code></td>
+                            <td>96rem <em>(1536px)</em></td>
+                            <td><code class="keywords">@media (width >= 96rem) { ... }</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+        <section class="main-section" id="Dark_mode">
+            <header>Dark mode</header>
+            <article>
+                <p>Using variants to style your site in dark mode.</p>
+                <p>Now that dark mode is a first-class feature of many operating systems, it's becoming more and more
+                    common to
+                    design a dark version of your website to go along with the default design.</p>
+                <p>To make this as easy as possible, Tailwind includes a dark variant that lets you style your site
+                    differently
+                    when dark mode is enabled:</p>
+                <code>
+          <pre>
+  &lt;div class="bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5"&gt;
+    &lt;div&gt;
+      &lt;span class="inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg"&gt;
+        &lt;svg class="h-6 w-6 stroke-white" ...&gt;
+          &lt;!-- ... --&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;h3 class="text-gray-900 dark:text-white mt-5 text-base font-medium tracking-tight "&gt;Writes upside-down&lt;/h3&gt;
+    &lt;p class="text-gray-500 dark:text-gray-400 mt-2 text-sm "&gt;
+    The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
+    &lt;/p&gt;
+  &lt;/div&gt;</pre>
+        </code>
+                <p>By default this uses the <code class="keywords">prefers-color-scheme</code> CSS media feature, but
+                    you can
+                    also build sites
+                    that support toggling dark mode manually by overriding the dark variant.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Theme_variables">
+            <header>Theme variables</header>
+            <article>
+                <p>Using utility classes as an API for your design tokens.</p>
+                <p>Tailwind is a framework for building custom designs, and different designs need different typography,
+                    colors,
+                    shadows, breakpoints, and more.</p>
+                <p>These low-level design decisions are often called design tokens, and in Tailwind projects you store
+                    those
+                    values in theme variables.</p>
+                <h2>What are theme variables?</h2>
+                <p>Theme variables are special CSS variables defined using the <code class="keywords">@theme</code>
+                    directive
+                    that influence
+                    which utility classes exist in your project.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Colors">
+            <header>Colors</header>
+            <article>
+                <p>Using and customizing the color palette in Tailwind CSS projects.</p>
+                <p>Tailwind CSS includes a vast, beautiful color palette out of the box, carefully crafted by expert
+                    designers
+                    and suitable for a wide range of different design styles.</p>
+                <p>Every color in the default palette includes 11 steps, with 50 being the lightest, and 950 being the
+                    darkest:
+                </p>
+                <code>
+          <pre>
+  &lt;div&gt;
+    &lt;div class="bg-sky-50"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-100"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-200"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-300"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-400"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-500"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-600"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-700"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-800"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-900"&gt;&lt;/div&gt;
+    &lt;div class="bg-sky-950"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre>
+        </code>
+                <p>The entire color palette is available across all color related utilities, including things like
+                    background
+                    color, border color, fill, caret color, and many more.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Adding_custom_styles">
+            <header>Adding custom styles</header>
+            <article>
+                <p>Best practices for adding your own custom styles in Tailwind projects.</p>
+                <p>Often the biggest challenge when working with a framework is figuring out what you’re supposed to do
+                    when
+                    there’s something you need that the framework doesn’t handle for you.</p>
+                <p>Tailwind has been designed from the ground up to be extensible and customizable, so that no matter
+                    what
+                    you’re building you never feel like you’re fighting the framework.</p>
+                <p>This guide covers topics like customizing your design tokens, how to break out of those constraints
+                    when
+                    necessary, adding your own custom CSS, and extending the framework with plugins.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Detecting_classes_in_source_files">
+            <header>Detecting classes in source files</header>
+            <article>
+                <p>Understanding and customizing how Tailwind scans your source files.</p>
+                <p>Tailwind works by scanning your project for utility classes, then generating all of the necessary CSS
+                    based
+                    on the classes you've actually used.</p>
+                <p>This makes sure your CSS is as small as possible, and is also what makes features like arbitrary
+                    values
+                    possible.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Functions_and_directives">
+            <header>Functions and directives</header>
+            <article>
+                <p>A reference for the custom functions and directives Tailwind exposes to your CSS.</p>
+                <h2>Directives</h2>
+                <p>Directives are custom Tailwind-specific at-rules you can use in your CSS that offer special
+                    functionality for
+                    Tailwind CSS projects.</p>
+                <ul>
+                    <li>@import</li>
+                    <li>@theme</li>
+                    <li>@source</li>
+                    <li>@utility</li>
+                    <li>@variant</li>
+                    <li>@custom-variant</li>
+                    <li>@apply</li>
+                    <li>@reference</li>
+                </ul>
+                <h2>Functions</h2>
+                <p>Tailwind provides the following build-time functions to make working with colors and the spacing
+                    scale
+                    easier.</p>
+                <ul>
+                    <li>--alpha()</li>
+                    <li>--spacing()</li>
+                </ul>
+                <h2>Compatibility</h2>
+                <p>The following directives and functions exist solely for compatibility with Tailwind CSS v3.x.</p>
+                <ul>
+                    <li>@config</li>
+                    <li>@plugin</li>
+                    <li>theme()</li>
+                </ul>
+            </article>
+        </section>
+        <section class="main-section" id="Reference">
+            <header>Reference</header>
+            <article>
+                <ul>
+                    <li>All the documentation in this page is taken from: <a
+                            href="https://tailwindcss.com/docs/styling-with-utility-classes">Tailwind
+                            CSS</a></li>
+                </ul>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
